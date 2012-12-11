@@ -34,7 +34,7 @@ public class DisplayFactory {
 			}
 			System.out.print('\n');
 		}
-		
+		System.out.print('\n');
 	}
 	
 }

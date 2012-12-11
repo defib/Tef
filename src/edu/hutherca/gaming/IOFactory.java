@@ -9,17 +9,17 @@ public class IOFactory {
 	private IOLogic gameLogic;
 	private int currentTurn;
 	private int nextTurn;
-	
+
 	private Cell[][] dungeonMap;
-	
-	
-	
+
+
+
 	public IOFactory(){
 		this.gameLogic = new IOLogic();
-		this.currentTurn = 1;
+		this.currentTurn = 0;
 		this.nextTurn = 1;
 	}
-	
+
 	public int addPlayer(){
 		int numberOfPlayers = gameLogic.getPlayers().size();
 		switch (numberOfPlayers) {
@@ -39,18 +39,26 @@ public class IOFactory {
 	 * Places the players in the dungeon from gameLogic.getPlayers();
 	 */
 	public void placePlayers(){
-		
+
 		for(Character p : gameLogic.getPlayers()){
 			gameLogic.placePlayer(p, dungeonMap);
 		}
 	}
 
 	public void playerTurn() {
-		// TODO Auto-generated method stub
-		
+		boolean playerMoved = false;
+		while(!playerMoved){
+			playerMoved = gameLogic.takeTurn(currentTurn, dungeonMap);
+		}
+
+		currentTurn++;
+		if (currentTurn >= gameLogic.getPlayers().size()){
+			currentTurn = 0;
+		}
+
 	}
-	
-	
+
+
 	public Cell[][] getDungeonMap() {
 		return dungeonMap;
 	}

@@ -29,6 +29,12 @@ public class Coordinates {
 			this.yCord = yCord;
 		}
 
+		public void setCoords(int x, int y) {
+			this.xCord = x;
+			this.yCord = y;
+			
+		}
+
         
     
 }
